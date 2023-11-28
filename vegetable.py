@@ -1,4 +1,4 @@
-class InvalidPrice(Exception):
+'''class InvalidPrice(Exception):
     pass
 
 class InvalidQuantity(Exception):
@@ -67,4 +67,99 @@ if __name__ == '__main__':
         carrot.stock = 'ghwi'
 
     except (InvalidPrice, InvalidQuantity) as e:
-        print(f"Error: {e}")
+        print(f"Error: {e}")'''
+
+
+#Template Pattern
+
+# Define different attributes for various types of goods using
+# Template Design Pattern.
+
+from abc import ABC,abstractmethod
+
+class Item(ABC):
+
+    @abstractmethod
+    def item_type(self):
+        pass
+
+    @abstractmethod
+
+    def item_attributes(self):
+        pass
+
+class Greens(Item):
+
+    def __init__(self,item_name):
+
+        self.item_name=item_name
+
+    def item_type(self):
+
+        self.item_type="Greens"
+
+    def item_attributes(self,price_per_bunch):
+
+        self.bunch_price= price_per_bunch
+
+class Vegetable(Item):
+
+    def __init__(self,veg_name):
+
+        self.veg_name=veg_name
+
+    def item_type(self):
+
+        self.type="Vegetable"
+
+    def item_attribute(self,qty,item_price_per_kg):
+
+        self.item_price=item_price_per_kg
+
+        return self.item_price*qty
+
+# Strategy Pattern
+
+# To define Sales on particular days and discount for 
+#particular prices
+
+class Sales:
+
+    def cost(self,price):
+
+        pass
+
+class SundaySales(Sales):
+
+    def cost(self,price=100):
+
+        return price*0.9
+    
+class Above1000(Sales):
+
+    def cost(self,price=1100):
+
+        return price*0.8
+    
+class Bill:
+
+    def __init__(self,bill_amount):
+
+        self.bill_amount=bill_amount
+
+    def discount(self):
+
+        return self.bill_amount.cost()
+
+
+#Driver Code
+
+S=SundaySales()
+Sale=Bill(S)
+print(Sale.discount())
+
+T=Above1000()
+Sale2=Bill(T)
+print(Sale2.discount())
+
+
