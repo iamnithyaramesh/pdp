@@ -1,4 +1,4 @@
-'''class InvalidPrice(Exception):
+class InvalidPrice(Exception):
     pass
 
 class InvalidQuantity(Exception):
@@ -67,56 +67,8 @@ if __name__ == '__main__':
         carrot.stock = 'ghwi'
 
     except (InvalidPrice, InvalidQuantity) as e:
-        print(f"Error: {e}")'''
+        print(f"Error: {e}")
 
-
-#Template Pattern
-
-# Define different attributes for various types of goods using
-# Template Design Pattern.
-
-from abc import ABC,abstractmethod
-
-class Item(ABC):
-
-    @abstractmethod
-    def item_type(self):
-        pass
-
-    @abstractmethod
-
-    def item_attributes(self):
-        pass
-
-class Greens(Item):
-
-    def __init__(self,item_name):
-
-        self.item_name=item_name
-
-    def item_type(self):
-
-        self.item_type="Greens"
-
-    def item_attributes(self,price_per_bunch):
-
-        self.bunch_price= price_per_bunch
-
-class Vegetable(Item):
-
-    def __init__(self,veg_name):
-
-        self.veg_name=veg_name
-
-    def item_type(self):
-
-        self.type="Vegetable"
-
-    def item_attribute(self,qty,item_price_per_kg):
-
-        self.item_price=item_price_per_kg
-
-        return self.item_price*qty
 
 
 
